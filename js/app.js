@@ -262,7 +262,7 @@
             <ul class="drawer__sub" hidden>${cats}</ul>
           </li>
           <li class="drawer__item"><a class="drawer__row" href="index.html#delivery">SHIPPING/DELIVERY</a></li>
-          <li class="drawer__item"><a class="drawer__row" href="product.html?id=chocolate#ingredients">OUR INGREDIENTS</a></li>
+          <li class="drawer__item"><button type="button" class="drawer__row" data-toast="Our ingredients page isn’t part of this prototype.">OUR INGREDIENTS</button></li>
           <li class="drawer__item">
             <button class="drawer__row" aria-expanded="false" data-action="toggle-sub">LOCATIONS <img src="${A}icon-chevron-down.svg" alt=""></button>
             <ul class="drawer__sub" hidden>${locs}</ul>
