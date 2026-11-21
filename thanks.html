@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Thank You · Erin McKenna’s Bakery</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&family=Roboto&family=Shrikhand&family=Source+Sans+3&family=Spicy+Rice&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body data-page="thanks">
+<div class="page">
+  <header id="site-header"></header>
+  <main class="thanks">
+    <h1 style="font:inherit">Thank you for completing the task in this test prototype</h1>
+    <p id="order-summary" style="margin-top:22px;font-weight:400"></p>
+    <a class="link-caps" href="index.html">BACK TO HOME</a>
+  </main>
+</div>
+<script src="js/app.js"></script>
+<script>
+  (function () {
+    const o = EMB.safeGet(EMB.ORDER_KEY, null);
+    if (!o || !o.date) return;
+    const when = new Date(o.date).toLocaleDateString("en-US", { weekday: "long", month: "long", day: "numeric" });
+    const items = o.lines.reduce((n, l) => n + l.qty, 0);
+    EMB.qs("#order-summary").textContent = o.mode === "pickup"
+      ? `Your ${items} item${items > 1 ? "s" : ""} will be ready for pickup in ${o.where} on ${when}. Total ${EMB.money(o.total)}.`
+      : `Your ${items} item${items > 1 ? "s" : ""} will be delivered to ${o.where} on ${when}. Total ${EMB.money(o.total)}.`;
+  })();
+</script>
+</body>
+</html>

@@ -1,0 +1,6 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="54.35" height="20" viewBox="0 0 54.35 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Month Pagination">
+<path id="Back" d="M6.175 6.175L5 5L0 10L5 15L6.175 13.825L2.35833 10L6.175 6.175Z" fill-rule="evenodd" clip-rule="evenodd" fill="#5A5A5A"/>
+<path id="Next" d="M49.35 5L48.175 6.175L51.9917 10L48.175 13.825L49.35 15L54.35 10L49.35 5Z" fill-rule="evenodd" clip-rule="evenodd" fill="#5A5A5A"/>
+</g>
+</svg>
