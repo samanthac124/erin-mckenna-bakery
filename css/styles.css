@@ -292,6 +292,8 @@ html.no-scroll { overflow: hidden; }
 }
 .slider-small-label { font: 400 20px/22px var(--f-fun); letter-spacing: -0.4px; color: var(--dark); white-space: nowrap; }
 
+.dot-field { pointer-events: none; }
+.bubble { position: absolute; border-radius: 50%; background: #fff; }
 .shop-slider { scroll-snap-type: x mandatory; }
 .shop-slider.is-dragging { scroll-snap-type: none; }
 /* 260px panels + 65px side padding: the centered panel leaves 65px of each neighbour showing. */
