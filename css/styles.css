@@ -383,21 +383,28 @@ html.no-scroll { overflow: hidden; }
    ========================================================= */
 .pdp { background: var(--beige); padding-top: 21px; }
 .pdp-card {
-  position: relative; margin-left: var(--m); width: 342px; height: 660px;
+  position: relative; margin-left: var(--m); width: 342px; min-height: 660px;
   background: #fff; border: 1px solid var(--border); border-radius: 3px;
 }
-.pdp-title { font: 700 22px/18px var(--f-body); white-space: nowrap; }
+/* Card content below the picture flows top to bottom (same spacing as the Figma layout for a one-line name). */
+.pdp-body { padding: 243px 20px 22px; }
+.pdp-line { width: 76px; height: 2px; }
+.pdp-title { margin-top: 24px; font: 700 22px/26px var(--f-body); }
+.pdp-rating { display: flex; align-items: center; gap: 14px; margin-top: 7px; }
+.pdp-tagrow { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; margin-top: 10px; }
+.pdp-tagrow .tag-lg { max-width: 230px; }
+.pdp-buy { display: flex; justify-content: space-between; align-items: center; margin-top: 11px; }
 .pdp-reviews-link { font: 400 14px/normal var(--f-body); text-decoration: underline; }
-.pdp-price { font: 600 22px/18px var(--f-body); letter-spacing: 0.66px; }
+.pdp-price { flex: none; font: 600 22px/18px var(--f-body); letter-spacing: 0.66px; }
 /* Outer tabs hug the 22px margins; the middle one sits on the card's true center. */
-.pdp-tabs { position: absolute; left: 20px; right: 20px; top: 373px; height: 48px; display: grid; grid-template-columns: 1fr auto 1fr; }
+.pdp-tabs { margin-top: 5px; height: 48px; display: grid; grid-template-columns: 1fr auto 1fr; }
 .pdp-tabs .pdp-tab:first-child { justify-self: start; }
 .pdp-tabs .pdp-tab:last-child { justify-self: end; }
 .pdp-tab { position: relative; height: 48px; padding-top: 1px; font: 600 16px/22px var(--f-body); letter-spacing: -0.32px; color: #000; }
 .pdp-tab[aria-selected="true"] { color: var(--dark-2); padding-top: 0; }
 .pdp-tab[aria-selected="true"]::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 2px; background: var(--primary); }
-.pdp-panel { position: absolute; left: 20px; top: 439px; width: 300px; font: 400 16px/22px var(--f-body); }
-.qty { position: absolute; width: 64px; height: 50px; display: flex; align-items: center; justify-content: space-between; padding: 0 0 0 1px; }
+.pdp-panel { margin-top: 18px; min-height: 132px; font: 400 16px/22px var(--f-body); } /* min-height: no jump when switching tabs */
+.qty { position: relative; flex: none; width: 64px; height: 50px; display: flex; align-items: center; justify-content: space-between; padding: 0 0 0 1px; }
 .qty::before { content: ""; position: absolute; inset: 0; background: url("../assets/qty-box.svg") no-repeat center / 100% 100%; pointer-events: none; }
 .qty button { width: 24px; height: 24px; position: relative; z-index: 1; }
 .qty button img { width: 24px; height: 24px; }

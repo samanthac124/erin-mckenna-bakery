@@ -75,12 +75,15 @@
     <div class="pdp">
       <section class="pdp-card" aria-labelledby="pdp-title">
         ${productImage(p, "hero", [0, 15, 340, 215])}
-        <img class="abs" src="${A}line.svg" alt="" style="left:20px;top:243px;width:76px;height:2px">
-        <h1 class="abs pdp-title" id="pdp-title" style="left:20px;top:273px">${esc(p.name)}</h1>
-        <div class="abs" style="left:20px;top:302px">${stars(p.rating)}</div>
-        <a class="abs pdp-reviews-link" href="#reviews" style="left:134px;top:304px">${p.reviews} Reviews</a>
-        ${isFood ? `<div class="abs" style="left:20px;top:332px;width:230px">${tagHTML("tag-lg", "GLUTEN FREE, DAIRY FREE, NUT FREE, SOY FREE &amp; VEGAN")}</div>` : ""}
-        <p class="abs pdp-price" style="right:20px;top:332px">${money(p.price)}</p>
+        <!-- Everything under the picture flows, so a long name can wrap and push the rest down. -->
+        <div class="pdp-body">
+        <img class="pdp-line" src="${A}line.svg" alt="">
+        <h1 class="pdp-title" id="pdp-title">${esc(p.name)}</h1>
+        <div class="pdp-rating">${stars(p.rating)}<a class="pdp-reviews-link" href="#reviews">${p.reviews} Reviews</a></div>
+        <div class="pdp-tagrow">
+          ${isFood ? tagHTML("tag-lg", "GLUTEN FREE, DAIRY FREE, NUT FREE, SOY FREE &amp; VEGAN") : "<span></span>"}
+          <p class="pdp-price">${money(p.price)}</p>
+        </div>
 
         <div class="pdp-tabs" role="tablist" aria-label="Product information">
           <button class="pdp-tab" role="tab" id="tab-about" aria-selected="true" aria-controls="pdp-panel" data-tab="about">About</button>
@@ -89,12 +92,15 @@
         </div>
         <div class="pdp-panel" id="pdp-panel" role="tabpanel" aria-labelledby="tab-about"><p>${TABS.about}</p></div>
 
-        <div class="qty" style="left:20px;top:585px">
-          <button type="button" data-step="-1" aria-label="Decrease quantity"><img src="${A}icon-minus.svg" alt=""></button>
-          <output id="qty" aria-live="polite">1</output>
-          <button type="button" data-step="1" aria-label="Increase quantity"><img src="${A}icon-plus.svg" alt=""></button>
+        <div class="pdp-buy">
+          <div class="qty">
+            <button type="button" data-step="-1" aria-label="Decrease quantity"><img src="${A}icon-minus.svg" alt=""></button>
+            <output id="qty" aria-live="polite">1</output>
+            <button type="button" data-step="1" aria-label="Increase quantity"><img src="${A}icon-plus.svg" alt=""></button>
+          </div>
+          <button class="btn btn--dark" id="add-to-cart" style="width:210px">Add to Cart</button>
         </div>
-        <button class="btn btn--dark abs" id="add-to-cart" style="right:20px;top:582px;width:210px">Add to Cart</button>
+        </div>
       </section>
 
       <div class="pdp-details">
