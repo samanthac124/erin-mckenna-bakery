@@ -152,8 +152,6 @@ h1, h2, h3 { margin: 0; font-weight: inherit; }
 }
 .btn--dark { background: var(--dark); color: #fff; }
 .btn--outline { background: #fff; color: var(--ink); border: 1px solid #000; }
-.btn--dark:hover { background: #2f2f2f; }
-.btn--outline:hover { background: #f6f6f6; }
 
 .stars { display: flex; }
 .stars img { width: 20px; height: 20px; }
@@ -203,7 +201,6 @@ button.field { text-align: left; cursor: pointer; }
 .site-footer .col-2 { left: 208px; }
 .site-footer b { font-weight: 700; }
 .site-footer a { text-decoration: none; }
-.site-footer a:hover { text-decoration: underline; }
 .socials { position: absolute; top: 189px; left: 208px; display: flex; gap: 11px; }
 .socials a { width: 24px; height: 25px; display: block; }
 
@@ -239,7 +236,6 @@ html.no-scroll { overflow: hidden; }
 .drawer__row[aria-expanded="true"] img { transform: rotate(180deg); }
 .drawer__sub { list-style: none; margin: 0 0 8px; padding: 0 0 0 14px; }
 .drawer__sub a { display: block; padding: 4px 0; font: 400 16px/22px var(--f-body); letter-spacing: 0.4px; text-decoration: none; color: #333; }
-.drawer__sub a:hover { text-decoration: underline; }
 .drawer__contact { margin-top: 43px; }
 .drawer__contact p { font: 400 18px/normal var(--f-body); letter-spacing: 0.9px; margin-bottom: 9px; }
 .drawer__contact a { display: block; font: 400 16px/27px var(--f-contact); letter-spacing: 0.8px; text-decoration: none; }
@@ -328,7 +324,6 @@ html.no-scroll { overflow: hidden; }
 .step p { font: 400 14px/22px var(--f-body); letter-spacing: -0.28px; width: 88px; margin: 19px auto 0; }
 
 .shop-city { font: 400 26px/22px var(--f-fun); color: var(--dark); text-decoration: none; }
-.shop-city:hover { text-decoration: underline; }
 
 /* =========================================================
    CATEGORY
@@ -346,7 +341,6 @@ html.no-scroll { overflow: hidden; }
   background: #fff; border: 1px solid var(--border); border-radius: 3px;
   text-decoration: none; color: #000;
 }
-.card:hover { box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12); }
 .card .crop { border-radius: 5px; overflow: hidden; }
 /* Card content shares the image's 10px inset on the left and right. */
 .card__title { position: absolute; left: 10px; top: 152px; width: 143px; font: 600 16px/18px var(--f-body); letter-spacing: 0.48px; }
@@ -443,7 +437,6 @@ html.no-scroll { overflow: hidden; }
 
 .breadcrumb { display: flex; align-items: center; height: 24px; margin: 3px 0 0 31px; font: 600 16px/22px var(--f-body); letter-spacing: -0.32px; }
 .breadcrumb a { color: var(--dark-2); text-decoration: none; }
-.breadcrumb a:hover { text-decoration: underline; }
 .breadcrumb img { width: 24px; height: 24px; }
 .form { position: relative; padding: 0 30px 0 31px; }
 .form-label { display: block; height: 18px; font: 600 16px/18px var(--f-body); letter-spacing: 0.48px; }
@@ -505,3 +498,70 @@ html.no-scroll { overflow: hidden; }
 /* Thank-you */
 .thanks { min-height: 560px; padding: 78px 94px 0; font: 700 14px/22px var(--f-ui); letter-spacing: -0.28px; }
 .thanks a { display: inline-block; margin-top: 28px; }
+
+/* =========================================================
+   INTERACTION STATES
+   Hover effects apply only on devices with a real pointer (no "sticky" hover on phones);
+   :active gives touch users a press; :focus-visible mirrors hover for keyboard users.
+   ========================================================= */
+.btn, .shop-btn, .topnav__btn, .drawer__close, .card, .big-card .crop img, .card .crop img,
+.shop-panel .crop img, .shop-panel .cover img, .shop-panel .abs img, .socials a, .link-caps, .shop-city,
+.cat-tab, .view-all, .site-footer a, .drawer__row, .drawer__sub a, .order-item__remove, .qty button,
+.order-item__qty button, .breadcrumb a, .pdp-reviews-link, .big-card__title a, .order-item__name, .review-body button {
+  transition: background-color .18s ease, color .18s ease, box-shadow .18s ease, transform .18s ease,
+    text-decoration-color .18s ease, filter .18s ease;
+}
+
+/* Filled buttons: lift, with a soft shadow */
+.btn--dark:active, .shop-btn:active { transform: translateY(1px); }
+/* Outline buttons: fill with the brand purple */
+.btn--outline:active { background: var(--purple); }
+
+/* Text links: underline turns pink and thicker */
+.link-caps, .shop-city, .site-footer a, .drawer__sub a, .breadcrumb a, .pdp-reviews-link,
+.big-card__title a, .order-item__name, .review-body button {
+  text-decoration-line: underline; text-decoration-color: transparent;
+  text-decoration-thickness: 2px; text-underline-offset: 3px;
+}
+.link-caps, .pdp-reviews-link, .review-body button { text-decoration-color: currentColor; text-decoration-thickness: 1px; text-underline-offset: auto; }
+
+/* Icon buttons: a light circle appears behind the icon */
+.topnav__btn, .drawer__close, .order-item__remove, .qty button, .order-item__qty button { border-radius: 50%; }
+.topnav__btn:active, .drawer__close:active { background: #ececec; }
+
+@media (hover: hover) and (pointer: fine) {
+  .btn--dark:hover, .shop-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 14px rgba(66, 66, 66, 0.28); }
+  .shop-btn:hover { box-shadow: none; filter: drop-shadow(0 6px 10px rgba(66, 66, 66, 0.3)); }
+  .btn--outline:hover { background: var(--purple); }
+
+  .link-caps:hover, .pdp-reviews-link:hover, .review-body button:hover {
+    text-decoration-color: var(--pink); text-decoration-thickness: 2px;
+  }
+  .shop-city:hover, .site-footer a:hover, .drawer__sub a:hover, .breadcrumb a:hover,
+  .big-card__title a:hover, .order-item__name:hover { text-decoration-color: var(--pink); }
+
+  .topnav__btn:hover, .drawer__close:hover, .order-item__remove:hover { background: #f1f1f1; }
+  .qty button:hover, .order-item__qty button:hover { background: rgba(0, 0, 0, 0.06); }
+
+  .cat-tab:not([aria-current="page"]):hover, .view-all:hover { color: var(--pink); }
+  .drawer__row:hover { color: var(--pink); }
+  .socials a:hover { transform: translateY(-2px); filter: drop-shadow(0 3px 4px rgba(0, 0, 0, 0.35)); }
+
+  /* Cards and slider panels: card lifts, picture zooms in slightly */
+  .card:hover { transform: translateY(-3px); box-shadow: 0 8px 18px rgba(0, 0, 0, 0.14); }
+  .card:hover .crop img, .big-card .crop:hover img { transform: scale(1.04); }
+  .shop-panel:hover .crop img, .shop-panel:hover .cover img, .shop-panel:hover .abs img { transform: scale(1.05); }
+  .shop-panel:hover .shop-hl { background: #e2a9e5; }
+}
+
+/* Keyboard focus gets the same feedback as hover */
+.btn--outline:focus-visible { background: var(--purple); }
+.link-caps:focus-visible, .shop-city:focus-visible, .site-footer a:focus-visible, .breadcrumb a:focus-visible,
+.order-item__name:focus-visible, .big-card__title a:focus-visible { text-decoration-color: var(--pink); }
+.card:focus-visible { box-shadow: 0 8px 18px rgba(0, 0, 0, 0.14); }
+
+@media (prefers-reduced-motion: reduce) {
+  .btn--dark:hover, .shop-btn:hover, .card:hover, .socials a:hover { transform: none; }
+  .card:hover .crop img, .big-card .crop:hover img, .shop-panel:hover .crop img,
+  .shop-panel:hover .cover img, .shop-panel:hover .abs img { transform: none; }
+}
