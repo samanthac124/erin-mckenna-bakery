@@ -7,7 +7,7 @@
   <title>Erin McKenna’s Bakery</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&family=Roboto&family=Shrikhand&family=Source+Sans+3&family=Spicy+Rice&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&family=Shrikhand&family=Spicy+Rice&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body data-page="home">
@@ -42,16 +42,16 @@
       <img class="abs" data-dot src="assets/dot-b.svg" alt="" style="left:21px;top:200px;width:12px">
       <img class="abs" data-dot src="assets/dot-b.svg" alt="" style="left:346px;top:272px;width:12px">
       <p class="home-tagline"><span class="hl">Gluten free</span> and <span class="hl">nut</span> <span class="hl">free</span> and <span class="hl">soy free</span> and <span class="hl">vegan</span> bakery</p>
-      <a class="shop-btn" href="category.html?c=all">Shop treats</a>
+      <a class="btn btn--dark shop-btn" href="category.html?c=all">Shop treats</a>
       <p class="abs fun-copy" style="left:19px;top:293px;width:352px">At Erin McKenna’s Bakery, you’re free to enjoy yummy treats without worrying about food allergies</p>
-      <p class="abs center-x section-heading" style="top:475px">Party with no worries!</p>
+      <p class="abs center-x party-copy" style="top:475px">Party with no worries!</p>
       <div class="crop" style="left:6px;top:422px;width:390px;height:332px">
         <img src="assets/hand-cupcake.png" alt="Hand holding a frosted cupcake with a candle" style="width:127.69%;height:188.87%;left:-14.87%;top:-88.86%">
       </div>
     </section>
 
     <!-- Allergen slider -->
-    <section class="stage" style="height:130px" aria-label="Free from">
+    <section class="stage" id="free-from" style="height:130px" aria-label="Free from">
       <div class="marquee abs" style="left:-2px;top:0;width:392px;height:130px">
         <div class="marquee__belt" id="allergen-belt">
         <div class="slider__track" style="width:1738px;height:130px">
@@ -188,14 +188,14 @@
     </section>
 
     <!-- Delivery steps -->
-    <section class="stage" style="height:411px">
+    <section class="stage" id="delivery" style="height:411px">
       <h2 class="abs center-x section-heading" style="top:21px;line-height:18px">Fast, fresh delivery</h2>
       <div class="steps" style="top:82px">
         <div class="step"><img src="assets/icon-bag.svg" alt=""><h3>Choose</h3><p>Select your favorite treat and add to cart</p></div>
-        <div class="step"><img src="assets/icon-calendar-lg.svg" alt=""><h3>Schedule</h3><p>Choose a day and time for fresh delivery</p></div>
+        <div class="step"><img src="assets/icon-calendar-lg.svg" alt=""><h3>Schedule</h3><p>Choose a day for fresh delivery</p></div>
         <div class="step"><img src="assets/icon-truck.svg" alt=""><h3>Enjoy</h3><p>Your treats arrive cold and fresh</p></div>
       </div>
-      <a class="abs center-x link-caps" style="top:317px" href="delivery.html">MORE ABOUT DELIVERY</a>
+      <button type="button" class="abs center-x link-caps" style="top:317px" data-toast="A full delivery FAQ isn’t part of this prototype.">MORE ABOUT DELIVERY</button>
     </section>
 
     <!-- Testimonial -->
@@ -212,19 +212,19 @@
     </section>
 
     <!-- Shops -->
-    <section data-dot-frame class="stage" style="height:628px">
+    <section data-dot-frame class="stage" id="shops" style="height:628px">
       <img class="abs" data-dot src="assets/dot-b.svg" alt="" style="left:338px;top:64px;width:12px">
       <img class="abs" data-dot src="assets/dot-b.svg" alt="" style="left:37px;top:76px;width:12px">
       <img class="abs" data-dot src="assets/dot-b.svg" alt="" style="left:359px;top:215px;width:12px">
       <img class="abs" data-dot src="assets/dot-b.svg" alt="" style="left:77px;top:381px;width:12px">
       <h2 class="abs center-x section-heading" style="top:100px;line-height:18px">Our shops</h2>
-      <a class="abs center-x shop-city" style="top:164px" href="pickup.html">Los Angeles</a>
-      <a class="abs center-x shop-city" style="top:215px" href="pickup.html">New York</a>
-      <a class="abs center-x shop-city" style="top:261px" href="pickup.html">Orlando</a>
-      <a class="abs center-x shop-city" style="top:311px;letter-spacing:0.52px" href="pickup.html">Santa Monica</a>
-      <a class="abs center-x link-caps" style="top:382px" href="pickup.html">LOCATIONS</a>
+      <p class="abs center-x shop-city" style="top:164px">Los Angeles</p>
+      <p class="abs center-x shop-city" style="top:215px">New York</p>
+      <p class="abs center-x shop-city" style="top:261px">Orlando</p>
+      <p class="abs center-x shop-city" style="top:311px;letter-spacing:0.52px">Santa Monica</p>
+      <button type="button" class="abs center-x link-caps" style="top:382px" data-toast="Store addresses and hours aren’t part of this prototype.">LOCATIONS</button>
       <div class="cover" style="left:27px;top:431px;width:335px;height:224px"><img src="assets/heart-hands.png" alt="Two hands making a heart shape"></div>
-      <a class="abs center-x" style="top:574px;font:600 16px/22px var(--f-body);letter-spacing:-0.32px;text-decoration:none" href="tel:+18554622225">855.GO.BABYCAKES</a>
+      <p class="abs center-x" style="top:574px;font:600 16px/22px var(--f-body);letter-spacing:-0.32px">855.GO.BABYCAKES</p>
       <p class="abs center-x" style="top:597px;font:300 14px/22px var(--f-body);letter-spacing:-0.28px">Allergen-free since 2005</p>
     </section>
   </main>

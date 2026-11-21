@@ -126,6 +126,7 @@
 
     dlg.addEventListener("keydown", (e) => {
       if (e.key === "Escape") { e.preventDefault(); close(false); return; }
+      if (e.key === "Tab") { window.EMB.trapFocus(e, dlg); return; } // stay inside the open dialog
       const day = e.target.closest("[data-day]");
       const step = { ArrowLeft: -1, ArrowRight: 1, ArrowUp: -7, ArrowDown: 7 }[e.key];
       if (!day || !step) return;

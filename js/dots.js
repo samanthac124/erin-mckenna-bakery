@@ -4,6 +4,7 @@
 (function () {
   "use strict";
   const MIN_SPEED = 6, MAX_SPEED = 12; // px per second
+  const PLAY_SECONDS = 5; // each section's dots move for 5s of on-screen time, then rest (WCAG 2.2.2)
 
   const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
   const frames = new Map(); // frame element -> { dots: [], visible, w, h }
@@ -11,7 +12,7 @@
   document.querySelectorAll("[data-dot]").forEach((el) => {
     const frame = el.closest("[data-dot-frame]");
     if (!frame) return;
-    if (!frames.has(frame)) frames.set(frame, { dots: [], visible: false, w: 0, h: 0 });
+    if (!frames.has(frame)) frames.set(frame, { dots: [], visible: false, w: 0, h: 0, played: 0 });
 
     // Layering: sit just above the frame's background art (marked data-under-dots), below everything else.
     const under = [...frame.children].filter((c) => c.hasAttribute("data-under-dots")).pop();
@@ -60,8 +61,9 @@
     last = t;
     let any = false;
     frames.forEach((f) => {
-      if (!f.visible) return;
+      if (!f.visible || f.played >= PLAY_SECONDS) return;
       any = true;
+      f.played += dt;
       f.dots.forEach((d) => {
         d.x += d.vx * dt;
         d.y += d.vy * dt;

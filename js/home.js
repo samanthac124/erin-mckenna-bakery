@@ -1,13 +1,21 @@
 (function () {
   "use strict";
-  const { qs, qsa } = window.EMB;
+  const { qs, qsa, playWhileVisible } = window.EMB;
 
-  // Allergen strip: append a hidden copy of the track so the marquee loops without a gap.
+  // Allergen strip: a hidden copy of the track makes the scroll seamless. It plays for 5 seconds once on
+  // screen, then freezes where it is and becomes a strip people can swipe themselves.
   const belt = qs("#allergen-belt");
   if (belt) {
     const copy = belt.firstElementChild.cloneNode(true);
     copy.setAttribute("aria-hidden", "true");
     belt.appendChild(copy);
+    const marquee = belt.parentElement;
+    playWhileVisible(marquee, 5000, () => {
+      const x = new DOMMatrix(getComputedStyle(belt).transform).m41;
+      belt.style.animation = "none";
+      marquee.classList.add("is-stopped");
+      marquee.scrollLeft = -x;
+    });
   }
 
   // Shop treats slider: each 260px panel snaps to the center, so panel i sits at scrollLeft = i * 260.

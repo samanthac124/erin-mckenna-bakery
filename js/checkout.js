@@ -25,10 +25,11 @@
        <a class="link-caps link-caps--wide" href="delivery.html" style="display:inline-block;margin-top:7px;font-weight:400">I need delivery</a>`;
 
   const noteLabel = isDelivery ? "Add gift note (optional)" : "Add cake writing (optional)";
-  const dateLabel = isDelivery ? "Delivery date" : "Pickup Date";
+  const dateLabel = isDelivery ? "Delivery date" : "Pickup date";
 
   root.innerHTML = `
     <nav class="breadcrumb" aria-label="Breadcrumb"><a href="cart.html">Cart</a><img src="${A}icon-chevron-right.svg" alt=""><span aria-current="page">${isDelivery ? "Delivery" : "Pickup"}</span></nav>
+    <h1 class="sr-only">${isDelivery ? "Delivery details" : "Pickup details"}</h1>
     <form class="form" id="form" novalidate>
       ${firstField}
       <p class="form-label" id="date-label" style="margin-top:${isDelivery ? 26 : 20}px">${dateLabel}</p>
@@ -40,11 +41,12 @@
       <label class="check" style="margin-top:27px"><input type="checkbox" id="note-on"> ${noteLabel}</label>
       <textarea class="field" id="note" aria-label="${noteLabel}" maxlength="${isDelivery ? 200 : 40}" style="margin-top:8px" disabled></textarea>
       <div class="totals" style="margin-top:30px;padding:0">
-        <div><span class="shipping-label">Shipping</span><span>${money(shipping)}</span></div>
-        <div style="margin-top:1px"><span>Subtotal</span><span>${money(Cart.subtotal() + shipping)}</span></div>
+        <div><span class="shipping-label">Subtotal</span><span>${money(Cart.subtotal())}</span></div>
+        <div><span class="shipping-label">${isDelivery ? "Shipping" : "Pickup"}</span><span>${shipping ? money(shipping) : "Free"}</span></div>
+        <div class="totals__total"><span>Total</span><span>${money(Cart.subtotal() + shipping)}</span></div>
       </div>
-      <button class="btn btn--dark" type="submit" style="margin:${isDelivery ? 37 : 30}px 0 0 46px;width:237px;height:61px">CHECKOUT</button>
-      <p style="margin-top:${isDelivery ? 27 : 26}px;text-align:center"><a class="link-caps link-caps--wide" href="cart.html">RETURN TO CART</a></p>
+      <button class="btn btn--dark btn--cta" type="submit" style="margin-top:30px">CHECKOUT</button>
+      <p class="center" style="margin-top:26px"><a class="link-caps link-caps--wide" href="cart.html">RETURN TO CART</a></p>
     </form>`;
 
   const form = qs("#form");
